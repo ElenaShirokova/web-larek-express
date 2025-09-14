@@ -26,9 +26,8 @@ app.use('/order', ordersRouter);
 app.use('/product', productsRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(errorLogger);
-
 app.use('*', notFoundHandler);
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 

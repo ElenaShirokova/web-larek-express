@@ -21,6 +21,8 @@ export const errorHandler = (
   });
 };
 
-export const notFoundHandler = (_req: Request, res: Response) => {
-  res.status(404).send({ message: 'Маршрут не найден' });
+export const notFoundHandler = (_req: Request, _res: Response, next: NextFunction) => {
+  const error = new Error('Объект не найден');
+  (error as any).statusCode = 404;
+  next(error);
 };
